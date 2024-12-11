@@ -20,18 +20,22 @@ body {
   margin: auto;
   padding: 1rem 2rem;
   width: min-content;
-  display: flex;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 
   list-style: none;
 
   font-family: var(--heading-font);
-  font-size: 1.25rem;
 
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0px 4px 20px 10px rgba(0, 0, 0, 0.1);
+}
+.tour-features-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .tour-features-list .tour-feature-icon-container {
   display: grid;
@@ -39,11 +43,78 @@ body {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: #ffbe00a6;
-  width: 75px;
-  height: 75px;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
 }
 .tour-features-list img {
-  object-fit: contain;
+  width: 100%;
+}
+
+.divider {
+  margin: 5px auto;
+  width: 100%;
+  height: 2px;
+  /* background: #b2b2b2; */
+  background: #000;
+
+  position: relative;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+
+  height: 6px;
+  width: 6px;
+  /* background: #b2b2b2; */
+  background: #000;
+  border-radius: 50%;
+}
+.divider::before {
+  left: 0;
+}
+.divider::after {
+  right: 0;
+}
+
+h1 span,
+h2 span {
+  font-family: var(--accent-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  width: max-content;
+}
+h2 span {
+  font-size: 1.5rem;
+}
+h2 .divider {
+  margin: 10px;
+  margin-left: 0;
+}
+
+.tour-images-container {
+  margin: 5vh 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.tour-images-container img {
+  max-width: 250px;
 }
 
 /* header */
@@ -55,24 +126,25 @@ header nav > ul {
   list-style: none;
 }
 header nav img {
-  max-width: 200px;
+  max-width: 150px;
 }
 header nav ul li:nth-child(2) {
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 
   border: 1px solid #d1d5da66;
   border-radius: 1rem;
   font-family: var(--heading-font);
 }
 header nav ul li:nth-child(2) span:nth-child(1) {
+  font-size: 0.75rem;
   color: #8a8a8a;
 }
 header nav ul li:nth-child(2) span:nth-child(2) {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   position: relative;
 }
@@ -106,17 +178,90 @@ header nav ul li:nth-child(2) span:nth-child(2)::after {
   text-align: center;
 }
 .explore-section h1 {
-  font-size: 5rem;
-  font-family: var(--heading-font);
+  font-size: 4rem;
 }
-.explore-section h1 span {
-  font-family: var(--accent-font);
+
+.explore-section .divider {
+  width: 40vw;
+}
+.explore-section h1 .heading {
+  margin: 2rem 0;
 }
 .explore-section p {
-  font-size: 1.25rem;
   font-weight: 300;
 }
 .explore-section > span {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: var(--heading-font);
+}
+
+.tour-highlights,
+.tour-includes {
+  margin: 5vh 5vw;
+  padding: 5vh 5vw;
+}
+
+.tour-highlights ul,
+.tour-includes ul {
+  padding: 2rem;
+  font-weight: 300;
+}
+
+.tour-includes + .divider {
+  margin: 5vh 20vw;
+  margin-bottom: 10vh;
+  width: 60vw;
+}
+
+.tour-flights {
+  margin: 5vh 5vw;
+  padding: 5vh 5vw;
+}
+.tour-flights h2 {
+  margin-bottom: 5vh;
+}
+
+.tour-flights .flight {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem 1rem;
+}
+
+.tour-flights .flight > div:first-child {
+  color: #6c6c6c;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tour-flights .flight > div:first-child img {
+  height: 1.5rem;
+}
+
+.tour-flights .routes-container .route {
+  height: 50px;
+  width: min(100%, 500px);
+  display: grid;
+  grid-template-columns: max-content 5px 1fr 1fr;
+  place-content: center;
+  gap: 2rem;
+}
+.tour-flights .routes-container .route .divider {
+  margin: 0;
+  height: 50px;
+  width: 1px;
+
+  transform: translateY(25%);
+}
+.tour-flights .routes-container .route .divider::before {
+  top: 0;
+  left: -2px;
+}
+.tour-flights .routes-container .route .divider::after {
+  display: none;
+}
+.tour-flights .routes-container .route:last-child .divider {
+  background: #fff;
 }
